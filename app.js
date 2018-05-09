@@ -62,9 +62,7 @@ function TransferMoney() {
     }
   }
 
-  if (destCurrency == "INRT") {
-    rate = 1/d_rate;
-  } else if(sourceCurrency == "INRT") {
+  if (sourceCurrency == "INRT") {
     rate = d_rate;
   } else {
     for (var i = 0; i < exchange_rate.length; i++) {
