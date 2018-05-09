@@ -200,18 +200,16 @@
       <table class="table table-hover" style="background-color:#f3f3f3;border-radius:8px;">
         <thead style="background-image: linear-gradient(45deg, #22417fcc 0%, #752a2a7a 100%);color: white;">
           <tr>
-            <th scope="col">Transaction Hash</th>
-            <th scope="col">Transaction Status</th>
-            <th scope="col">Token Purchased</th>
-            <th scope="col">Token Purchase Count</th>
-            <th scope="col">Token Sold</th>
-            <th scope="col">Token Sold Count</th>
-            <th scope="col">ETH Debited</th>
-            <th scope="col">ETH Credited</th>
+            <th scope="col">Sender Address</th>
+            <th scope="col">Receiver Address</th>
+            <th scope="col">Source Currency</th>
+            <th scope="col">Send</th>
+            <th scope="col">Destination Currency</th>
+            <th scope="col">Received</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+        <tbody  id = "TBODY">
+          <!-- <tr>
             <th scope="row">0x6ec10c6568feb74f5a749d0e9b2eb1c07d1b23fcef78d0516fad49f29128f32b</th>
             <td>Success</td>
             <td>INRT</td>
@@ -230,10 +228,10 @@
             <td>120</td>
             <td>10</td>
             <td></td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
-    </div> 
+    </div>
 
     <!-- Footer Start -->
     <div class="container" style="max-width: 1400px;">
@@ -276,6 +274,7 @@
       getBalance('USDT');
       getBalance('EURT');
       getBalance('RUBT');
+      updateTxTable();
     </script>
   </body>
 </html>

@@ -19,7 +19,7 @@ function getToken() {
   if (!currency || !amount) {
     alert("please send currency and amount");
     return;
-   
+
   }
   _contracInstance.getToken.sendTransaction(currency, amount, {
       from: accountAddress,
@@ -57,7 +57,7 @@ function TransferMoney() {
     return;
   }
 
-  _contracInstance.TransferMoney.sendTransaction(to, value, sourceCurrency, destCurrency, rate, {
+  _contracInstance.TransferMoney.sendTransaction(to, value, sourceCurrency, destCurrency, 50, {
     from: accountAddress,
     gas: 400000
   }, function (err, result) {
@@ -98,5 +98,53 @@ function getBalance(currency) {
       else if(currency == 'RUBT'){
         document.getElementById("RUBT-B").innerText = 'Balance : '+ result;
       }
+  });
+}
+
+function updateTxTable() {
+  _contracInstance.Transferred({}, { fromBlock: 0, toBlock: 'latest' }).get((error, eventResult) => {
+    if (error)
+      console.log('Error in myEvent event handler: ' + error);
+    else {
+      var event1;
+      var tableBody = document.getElementById('TBODY');
+      console.log(tableBody);
+      for (var i = 0; i < eventResult.length; i++) {
+        event1 = eventResult[i].args;
+        console.log('myEvent: ' , event1);
+
+        var tr = document.createElement('TR');
+
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(event1.from));
+        tr.appendChild(td);
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(event1.to));
+        tr.appendChild(td);
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(event1.sourceCurrency));
+        tr.appendChild(td);
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(event1.value));
+        tr.appendChild(td);
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(event1.destCurrency));
+        tr.appendChild(td);
+
+        var td = document.createElement('TD');
+        td.appendChild(document.createTextNode(event1.received));
+        tr.appendChild(td);
+
+
+        tableBody.appendChild(tr);
+        // document.getElementById("TxAllEvents").innerHTML += event1;
+        //JSON.stringify(eventResult.args));
+      }
+    }
   });
 }
