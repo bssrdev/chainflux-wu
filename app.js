@@ -11,12 +11,16 @@ var _abi = [ { "constant": false, "inputs": [ { "name": "myid", "type": "bytes32
 var CBMTContract = web3.eth.contract(_abi);
 var _contracInstance = CBMTContract.at(_address);
 
-function getToken(currency, amount) {
+function getToken() {
+
+  var amount=document.getElementById("amount").value;
+  var currency=document.getElementById("currency").value;
+
   if (!currency || !amount) {
     alert("please send currency and amount");
     return;
+   
   }
-
   _contracInstance.getToken.sendTransaction(currency, amount, {
       from: accountAddress,
       gas: 400000
@@ -24,13 +28,31 @@ function getToken(currency, amount) {
       if (err != null) {
         alert(err);
       } else {
-        alert(result);
+        alert('Your Transaction will be completed in a few seconds, please wait. And your transaction ID is '+result);
       }
+      setTimeout(location.reload.bind(location), 10000);
+      getBalance('INRT');
+      getBalance('USDT');
+      getBalance('EURT');
+      getBalance('RUBT');
+      // window.location.reload();
    });
 }
 
-function TransferMoney(to, value, sourceCurrency, destCurrency, rate) {
-  if (!to || !value || !sourceCurrency || !destCurrency || !rate) {
+function TransferMoney() {
+
+  var to=document.getElementById("to").value;
+  var value=document.getElementById("value").value;
+  var sourceCurrency=document.getElementById("sourceCurrency").value;
+  var destCurrency=document.getElementById("destCurrency").value;
+  // var rate=document.getElementById("rate").value;
+
+  // if (!to || !value || !sourceCurrency || !destCurrency || !rate) {
+  //   alert("please give all info");
+  //   return;
+  // }
+
+  if (!to || !value || !sourceCurrency || !destCurrency) {
     alert("please give all info");
     return;
   }
@@ -42,7 +64,8 @@ function TransferMoney(to, value, sourceCurrency, destCurrency, rate) {
     if (err != null) {
       alert(err);
     } else {
-      alert(result);
+      alert('Your Transaction will be completed in a few seconds, please wait. And your transaction ID is '+result);
+      setTimeout(location.reload.bind(location), 10000);
     }
   });
 }
@@ -56,10 +79,24 @@ function getBalance(currency) {
   _contracInstance.getBalance.call(currency, {
     from: accountAddress
   }, function (err, result) {
-    if (err != null) {
+    // console.log("",err,result);
+    if (err) {
       alert(err);
-    } else {
-      alert(result);
+      return;
     }
+      // alert(result);
+      console.log(currency, result);
+      if (currency == 'INRT') {
+        document.getElementById("INRT-B").innerText = 'Balance : '+ result;
+      }
+      else if(currency == 'USDT'){
+        document.getElementById("USDT-B").innerText = 'Balance : '+ result;
+      }
+      else if(currency == 'EURT'){
+        document.getElementById("EURT-B").innerText = 'Balance : '+ result;
+      }
+      else if(currency == 'RUBT'){
+        document.getElementById("RUBT-B").innerText = 'Balance : '+ result;
+      }
   });
 }

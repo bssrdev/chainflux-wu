@@ -1,5 +1,5 @@
 .info{
-	padding-bottom: 6px;
+    padding-bottom: 6px;
     font-size: 11px;
     font-weight: 700;
     position: absolute;
@@ -9,7 +9,7 @@
 }
 
 .padded{
-	padding: 2px 8px;
+    padding: 2px 8px;
 }
 
 .smoked {
@@ -25,3 +25,17 @@
     text-transform: uppercase;
 }
 
+.smoked1 {
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 4px;
+    /*background-color: rgba(0,0,0,.15);*/
+    /*background-color: #fba02b;*/
+    background-color: #9c7542;
+    text-align: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
