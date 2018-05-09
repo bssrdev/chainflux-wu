@@ -57,7 +57,7 @@ function TransferMoney() {
     return;
   }
 
-  _contracInstance.TransferMoney.sendTransaction(to, value, sourceCurrency, destCurrency, 50, {
+  _contracInstance.TransferMoney.sendTransaction(to, value, sourceCurrency, destCurrency, 67, {
     from: accountAddress,
     gas: 400000
   }, function (err, result) {
