@@ -32,7 +32,7 @@
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header" style="border-bottom: 0px solid #e9ecef;background: #4c6b8f;color: white;border-top-left-radius:0rem;border-top-right-radius:0rem;position: relative;">
-            <h5 class="modal-title" id="exampleModalCenterTitle" style="margin: 0;position: absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">GET & TRANSFER</h5>
+            <h5 class="modal-title" id="exampleModalCenterTitle" style="margin: 0;position: absolute;top: 50%;left: 50%;margin-right: -50%;transform: translate(-50%, -50%);">DEPOSIT & TRANSFER</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -40,7 +40,7 @@
           <div class="modal-body" style="padding: 0rem;">
             <nav style="background: #54779f;">
               <div class="nav" id="nav-tab" role="tablist" style="height: 60px;">
-                <a class="nav-item active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 48%;margin: 0 auto;padding: 17px;color: white;text-decoration: none;text-align: center;">GET</a>
+                <a class="nav-item active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 48%;margin: 0 auto;padding: 17px;color: white;text-decoration: none;text-align: center;">DEPOSIT</a>
                 <div style="background: white;width: 2px;"></div>
                 <a class="nav-item" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" style="width: 48%;margin: 0 auto;padding: 17px;color: white;text-decoration: none;text-align: center;">TRANSFER</a>
               </div>
@@ -48,36 +48,82 @@
             <div class="tab-content" id="nav-tabContent" style="padding: 1rem;">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" style="text-align: center;">
                 <br>
-                <h5>Enter the amount of tokens that you want to purchase</h5>
+                <h5>Enter the amount of money that you want to deposit</h5>
                 <br>
                 <div class="row" style="padding-left: 30px;padding-right: 30px;">
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="amount" aria-describedby="basic-addon3" placeholder="Enter the total amount.." style="height: 60px;">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Choose Your Country</label>
+                    </div>
+                    <select class="custom-select" id="country" style="height: 60px;" onclick="getCountry()">
+                      <option >India</option>
+                      <option >United States of America</option>
+                      <option >Germany</option>
+                      <option >Russia</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 30px;padding-right: 30px;">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="amount" aria-describedby="basic-addon3" placeholder="Enter the total amount that you want to deposit.." style="height: 60px;">
                   </div>
                   <div class="input-group mb-3">
-                    <select class="custom-select" id="currency" style="height: 60px;">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Your Currency</label>
+                    </div>
+                    <div class="form-control" type="text" id="currency" style="height: 60px;padding: 20px;" readonly></div>
+                    <!-- <select class="custom-select" id="currency" style="height: 60px;">
+                      <option id="COUNTRY"></option>
+                    </select> -->
+                  </div>
+                </div>
+                <br>
+                <button type="button" class="btn btn-primary" onclick="getToken()" style="width: 95%;height: 60px;background-color: #55779f;border-color: #55779f;">Deposit Money</button>
+              </div>
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" style="text-align: center;">
+                <br>
+                <h5>Enter money that you want to trasfer</h5>
+                <br>
+                <div class="row">
+                  <!-- <div class="input-group mb-3 col-md-6">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Receivers Currency</label>
+                    </div>
+                    <select class="custom-select" id="sourceCurrency" style="height: 60px;">
                       <option selected>INRT</option>
                       <option >USDT</option>
                       <option >EURT</option>
                       <option >RUBT</option>
                     </select>
+                  </div> -->
+                  <div class="input-group mb-3 col-md-12">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Send To Country</label>
+                    </div>
+                    <select class="custom-select" id="country1" style="height: 60px;" onclick="getCountry1()">
+                      <option >India</option>
+                      <option >United States of America</option>
+                      <option >Germany</option>
+                      <option >Russia</option>
+                    </select>
                   </div>
-                </div>
-                <br>
-                <button type="button" class="btn btn-primary" onclick="getToken()" style="width: 95%;height: 60px;background-color: #55779f;border-color: #55779f;">Get Tokens</button>
-              </div>
-              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" style="text-align: center;">
-                <br>
-                <h5>Enter tokens that you want to trade</h5>
-                <br>
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" id="to" aria-describedby="basic-addon3" placeholder="0x914Eb4C6f70cE9F20974572e87Ba106C8eA56552" style="height: 60px;">
                 </div>
                 <div class="row">
+                  <!-- <div class="input-group mb-3 col-md-6">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">From Country</label>
+                    </div>
+                    <select class="custom-select" id="sourceCountry" style="height: 60px;">
+                      <option selected>India</option>
+                      <option >United States of America</option>
+                      <option >Germany</option>
+                      <option >Russia</option>
+                    </select>
+                  </div> -->
                   <div class="input-group mb-3 col-md-6">
-                    <input type="text" class="form-control" id="value" aria-describedby="basic-addon3" placeholder="Enter the total Sender amount.." style="height: 60px;">
-                  </div>
-                  <div class="input-group mb-3 col-md-6">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Senders Currency</label>
+                    </div>
                     <select class="custom-select" id="sourceCurrency" style="height: 60px;">
                       <option selected>INRT</option>
                       <option >USDT</option>
@@ -85,23 +131,34 @@
                       <option >RUBT</option>
                     </select>
                   </div>
-                </div>
-                <div class="row">
-                  <!-- <div class="input-group mb-3 col-md-6">
-                    <input type="text" class="form-control" id="rate" aria-describedby="basic-addon3" placeholder="Enter the total Receiver amount.." style="height: 60px;">
-                  </div> -->
-                  <p style="margin-left: 20px;color: red;">Please choose into which currency you want to convert to.</p>
                   <div class="input-group mb-3 col-md-6">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Recievers Currency</label>
+                    </div>
+                    <div class="form-control" type="text" id="currency1" style="height: 60px;padding: 20px;" readonly></div>
+                  </div>
+                  <!-- <div class="input-group mb-3 col-md-6">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Recievers Currency</label>
+                    </div>
                     <select class="custom-select" id="destCurrency" style="height: 60px;">
                       <option selected>INRT</option>
                       <option >USDT</option>
                       <option >EURT</option>
                       <option >RUBT</option>
                     </select>
+                  </div> -->
+                </div>
+                <div class="row">
+                  <div class="input-group mb-3 col-md-6">
+                    <input type="text" class="form-control" id="to" aria-describedby="basic-addon3" placeholder="Please enter receivers wallet address.." style="height: 60px;">
+                  </div>
+                  <div class="input-group mb-3 col-md-6">
+                    <input type="text" class="form-control" id="value" aria-describedby="basic-addon3" placeholder="Enter the total Transfer amount.." style="height: 60px;">
                   </div>
                 </div>
                 <br>
-                <button type="button" class="btn btn-primary" onclick="TransferMoney()" style="width: 95%;height: 60px;background-color: #55779f;border-color: #55779f;">Transfer Tokens</button>
+                <button type="button" class="btn btn-primary" onclick="TransferMoney()" style="width: 95%;height: 60px;background-color: #55779f;border-color: #55779f;">Transfer Money</button>
               </div>
               <!-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" style="text-align: center;">
                 <h5>Enter the amount of tokens that you want to liquidate</h5>
@@ -146,7 +203,7 @@
             <div class="padded">
               <div class="smoked" style="margin-bottom: 215px;" id="INRT-B">
               </div>
-              <div class="smoked1" data-toggle="modal" data-target=".bd-example-modal-lg" id="myLargeModalLabel">Get & Transfer
+              <div class="smoked1" data-toggle="modal" data-target=".bd-example-modal-lg" id="myLargeModalLabel">Deposit & Transfer
               </div>
               <!-- <div class="smoked" data-toggle="modal" data-target=".bd-example-modal-lg">Liquidate Tokens
               </div> -->
@@ -158,7 +215,7 @@
             <div class="padded">
               <div class="smoked" style="margin-bottom: 215px;" id="USDT-B">
               </div>
-              <div class="smoked1" data-toggle="modal" data-target=".bd-example-modal-lg">Get & Transfer
+              <div class="smoked1" data-toggle="modal" data-target=".bd-example-modal-lg">Deposit & Transfer
               </div>
               <!-- <div class="smoked" data-toggle="modal" data-target=".bd-example-modal-lg">Liquidate Tokens
               </div> -->
@@ -170,7 +227,7 @@
             <div class="padded">
               <div class="smoked" style="margin-bottom: 215px;" id="EURT-B">
               </div>
-              <div class="smoked1" data-toggle="modal" data-target=".bd-example-modal-lg">Get & Transfer
+              <div class="smoked1" data-toggle="modal" data-target=".bd-example-modal-lg">Deposit & Transfer
               </div>
               <!-- <div class="smoked" data-toggle="modal" data-target=".bd-example-modal-lg">Liquidate Tokens
               </div> -->
@@ -182,7 +239,7 @@
             <div class="padded">
               <div class="smoked" style="margin-bottom: 215px;" id="RUBT-B">
               </div>
-              <div class="smoked1" data-toggle="modal" data-target=".bd-example-modal-lg">Get & Transfer
+              <div class="smoked1" data-toggle="modal" data-target=".bd-example-modal-lg">Deposit & Transfer
               </div>
               <!-- <div class="smoked" data-toggle="modal" data-target=".bd-example-modal-lg">Liquidate Tokens
               </div> -->

@@ -20,8 +20,22 @@ var exchange_rate = [
 
 function getToken() {
 
+  var country=document.getElementById("country").value;
   var amount=document.getElementById("amount").value;
-  var currency=document.getElementById("currency").value;
+  // var currency=document.getElementById("currency").value;
+
+  if (country == 'India') {
+    currency = 'INRT'
+  }
+  else if (country == 'United States of America') {
+    currency = 'USDT'
+  }
+  else if (country == 'Germany') {
+    currency = 'EURT'
+  }
+  else if (country == 'Russia') {
+    currency = 'RUBT'
+  }
 
   if (!currency || !amount) {
     alert("please send currency and amount");
@@ -50,7 +64,22 @@ function TransferMoney() {
   var to=document.getElementById("to").value;
   var value=document.getElementById("value").value;
   var sourceCurrency=document.getElementById("sourceCurrency").value;
-  var destCurrency=document.getElementById("destCurrency").value;
+  // var destCurrency=document.getElementById("destCurrency").value;
+  // var sourceCountry=document.getElementById("sourceCountry").value;
+  var country1=document.getElementById("country1").value;
+
+  if (country1 == 'India') {
+    destCurrency = 'INRT'
+  }
+  else if (country1 == 'United States of America') {
+    destCurrency = 'USDT'
+  }
+  else if (country1 == 'Germany') {
+    destCurrency = 'EURT'
+  }
+  else if (country1 == 'Russia') {
+    destCurrency = 'RUBT'
+  }
 
   var d_rate, rate;
   for (var i = 0; i < exchange_rate.length; i++) {
@@ -129,6 +158,46 @@ function getBalance(currency) {
         document.getElementById("RUBT-B").innerText = 'Balance : '+ result;
       }
   });
+}
+
+function getCountry() {
+
+  var sourceCountry=document.getElementById("country").value;
+
+  // console.log(sourceCountry);
+
+  if (sourceCountry == 'India') {
+    document.getElementById("currency").innerHTML = 'INRT';
+  }
+  else if (sourceCountry == 'United States of America') {
+    document.getElementById("currency").innerHTML = 'USDT';
+  }
+  else if (sourceCountry == 'Germany') {
+    document.getElementById("currency").innerHTML = 'EURT';
+  }
+  else if (sourceCountry == 'Russia') {
+    document.getElementById("currency").innerHTML = 'RUBT';
+  }
+}
+
+function getCountry1() {
+
+  var sourceCountry=document.getElementById("country1").value;
+
+  // console.log(sourceCountry);
+
+  if (sourceCountry == 'India') {
+    document.getElementById("currency1").innerHTML = 'INRT';
+  }
+  else if (sourceCountry == 'United States of America') {
+    document.getElementById("currency1").innerHTML = 'USDT';
+  }
+  else if (sourceCountry == 'Germany') {
+    document.getElementById("currency1").innerHTML = 'EURT';
+  }
+  else if (sourceCountry == 'Russia') {
+    document.getElementById("currency1").innerHTML = 'RUBT';
+  }
 }
 
 function updateTxTable() {
