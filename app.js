@@ -22,6 +22,7 @@ function getToken() {
 
   var country=document.getElementById("country").value;
   var amount=document.getElementById("amount").value;
+  var state=document.getElementById("state").value;
   // var currency=document.getElementById("currency").value;
 
   if (country == 'India') {
@@ -67,6 +68,7 @@ function TransferMoney() {
   // var destCurrency=document.getElementById("destCurrency").value;
   // var sourceCountry=document.getElementById("sourceCountry").value;
   var country1=document.getElementById("country1").value;
+  var state1=document.getElementById("state1").value;
 
   if (country1 == 'India') {
     destCurrency = 'INRT'
