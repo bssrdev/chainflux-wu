@@ -170,7 +170,7 @@
                 </div>
                 <div class="row" style="padding-left: 30px;padding-right: 30px;">
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="amount" aria-describedby="basic-addon3" placeholder="Enter the total amount that you want to deposit.." style="height: 60px;">
+                    <input type="number" onkeypress="return event.charCode >= 48" min="0" class="form-control" id="amount" aria-describedby="basic-addon3" placeholder="Enter the total amount that you want to deposit.." style="height: 60px;">
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -596,7 +596,7 @@
                     <input type="text" class="form-control" id="to" aria-describedby="basic-addon3" placeholder="Please enter receivers wallet address.." style="height: 60px;">
                   </div>
                   <div class="input-group mb-3 col-md-6">
-                    <input type="text" class="form-control" id="value" aria-describedby="basic-addon3" placeholder="Enter the total Transfer amount.." style="height: 60px;">
+                    <input type="number" onkeypress="return event.charCode >= 48" min="0" class="form-control" id="value" aria-describedby="basic-addon3" placeholder="Enter the total Transfer amount.." style="height: 60px;">
                   </div>
                 </div>
                 <br>
